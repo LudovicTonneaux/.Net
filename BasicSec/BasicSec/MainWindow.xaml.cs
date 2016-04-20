@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,7 @@ namespace BasicSec
 
         }
 
+        //RadioButtons
         private void radioButton(object sender, RoutedEventArgs e)
         {
             if (radioButtonEncrypteren.IsChecked == true)
@@ -39,6 +41,18 @@ namespace BasicSec
                 radioButtonEncrypteren.IsChecked = false;
                 buttonEncrypterenDecrypteren.Content = "Decrypteren";
                 labelHashCheck.IsEnabled = true;
+            }
+        }
+
+        //Bestand selecteren
+        private void buttonBestand_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "All files (*.*)|*.*";
+            openFileDialog1.Multiselect = false;
+            if (openFileDialog1.ShowDialog() == true)
+            {
+                string filepath = openFileDialog1.FileName;
             }
         }
     }

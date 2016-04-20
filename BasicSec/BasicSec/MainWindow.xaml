@@ -19,7 +19,7 @@
             <RadioButton x:Name="radioButtonEncrypteren" Content="Encrypteren" IsChecked="True" Click="radioButton"/>
             <RadioButton x:Name="radioButtonDecrypteren" Content="Decrypteren" Click="radioButton"/>
         </StackPanel>
-        <Button x:Name="buttonBestand" Content="Kies een bestand" HorizontalAlignment="Left" Margin="24,154,0,0" VerticalAlignment="Top" Width="100" Height="30" Grid.ColumnSpan="2"/>
+        <Button x:Name="buttonBestand" Content="Kies een bestand" HorizontalAlignment="Left" Margin="24,154,0,0" VerticalAlignment="Top" Width="100" Height="30" Grid.ColumnSpan="2" Click="buttonBestand_Click"/>
         <Button x:Name="buttonEncrypterenDecrypteren" Content="Encrypteren" HorizontalAlignment="Left" Margin="24,200,0,0" VerticalAlignment="Top" Width="260" Grid.ColumnSpan="2"/>
         <Label x:Name="labelHashCheck" Content="Hash check: " HorizontalAlignment="Left" Margin="24,225,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.132,0.462" Grid.ColumnSpan="2" IsEnabled="False"/>
     </Grid>
