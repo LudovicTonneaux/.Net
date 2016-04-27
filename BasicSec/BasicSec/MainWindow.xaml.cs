@@ -87,12 +87,14 @@ namespace BasicSec
                     StreamReader reader = new StreamReader(@".\Personen\" + naam + @"\Private.txt");
                     persoon.privateKey = reader.ReadLine();
                     reader.Close();
+                    reader.Dispose();
                 }
                 else
                 {
                     StreamReader reader = new StreamReader(@".\Personen\" + naam + @"\Private.txt");
                     persoon.privateKey = reader.ReadLine();
                     reader.Close();
+                    reader.Dispose();
                 }
 
                 if (!File.Exists(@".\Personen\" + naam + @"\Private.txt"))
@@ -101,18 +103,21 @@ namespace BasicSec
                     StreamReader reader = new StreamReader(@".\Personen\" + naam + @"\Public.txt");
                     persoon.publicKey = reader.ReadLine();
                     reader.Close();
+                    reader.Dispose();
                 }
                 else
                 {
                     StreamReader reader = new StreamReader(@".\Personen\" + naam + @"\Public.txt");
                     persoon.publicKey = reader.ReadLine();
                     reader.Close();
+                    reader.Dispose();
                 }
 
                 personen.Add(persoon);
             }
         }
 
+        //encrypteren en decrypteren
         private void buttonEncrypterenDecrypteren_Click(object sender, RoutedEventArgs e)
         {
             if (radioButtonDecrypteren.IsChecked == true)
