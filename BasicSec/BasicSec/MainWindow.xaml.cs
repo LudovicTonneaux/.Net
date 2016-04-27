@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,10 +22,20 @@ namespace BasicSec
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string filepath; //pad van het bestand
+        public List<Persoon> personen = new List<Persoon>(); //lijst van alle zenders en ontvangers
+
+
         public MainWindow()
         {
+            Personen();
+
             InitializeComponent();
 
+            listBoxZenders.ItemsSource = personen;
+            listBoxZenders.SelectedIndex = 0;
+            listBoxOntvangers.ItemsSource = personen;
+            listBoxOntvangers.SelectedIndex = 1;
         }
 
         //RadioButtons
@@ -34,13 +45,13 @@ namespace BasicSec
             {
                 radioButtonDecrypteren.IsChecked = false;
                 buttonEncrypterenDecrypteren.Content = "Encrypteren";
-                labelHashCheck.IsEnabled = false;
+                labelHashCheck.Visibility = System.Windows.Visibility.Hidden;
             }
             else if (radioButtonDecrypteren.IsChecked == true)
             {
                 radioButtonEncrypteren.IsChecked = false;
                 buttonEncrypterenDecrypteren.Content = "Decrypteren";
-                labelHashCheck.IsEnabled = true;
+                labelHashCheck.Visibility = System.Windows.Visibility.Visible;
             }
         }
 
@@ -52,7 +63,66 @@ namespace BasicSec
             openFileDialog1.Multiselect = false;
             if (openFileDialog1.ShowDialog() == true)
             {
-                string filepath = openFileDialog1.FileName;
+                filepath = openFileDialog1.FileName;
+                textBoxGekozenBestand.Text = filepath;
+            }
+        }
+
+        //Personen laden
+        private void Personen()
+        {
+            List<string> namen = new List<string>();
+            foreach (string s in Directory.GetDirectories(@".\Personen"))
+            {
+                namen.Add(s.Remove(0, 11));
+            }
+
+            foreach (string naam in namen)
+            {
+                Persoon persoon = new Persoon(naam);
+
+                if (!File.Exists(@".\Personen\" + naam + @"\Private.txt"))
+                {
+                    //private key aanmaken
+                    StreamReader reader = new StreamReader(@".\Personen\" + naam + @"\Private.txt");
+                    persoon.privateKey = reader.ReadLine();
+                    reader.Close();
+                }
+                else
+                {
+                    StreamReader reader = new StreamReader(@".\Personen\" + naam + @"\Private.txt");
+                    persoon.privateKey = reader.ReadLine();
+                    reader.Close();
+                }
+
+                if (!File.Exists(@".\Personen\" + naam + @"\Private.txt"))
+                {
+                    //public key aanmaken
+                    StreamReader reader = new StreamReader(@".\Personen\" + naam + @"\Public.txt");
+                    persoon.publicKey = reader.ReadLine();
+                    reader.Close();
+                }
+                else
+                {
+                    StreamReader reader = new StreamReader(@".\Personen\" + naam + @"\Public.txt");
+                    persoon.publicKey = reader.ReadLine();
+                    reader.Close();
+                }
+
+                personen.Add(persoon);
+            }
+        }
+
+        private void buttonEncrypterenDecrypteren_Click(object sender, RoutedEventArgs e)
+        {
+            if (radioButtonDecrypteren.IsChecked == true)
+            {
+                //Decrypteren
+                //HashCheck
+            }
+            else if (radioButtonEncrypteren.IsChecked == true)
+            {
+                //Encrypteren
             }
         }
     }
