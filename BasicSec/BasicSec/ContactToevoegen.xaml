@@ -1,11 +1,11 @@
-﻿<Window x:Class="BasicSec.PersoonToevoegen"
+﻿<Window x:Class="BasicSec.ContactenToevoegen"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BasicSec"
         mc:Ignorable="d"
-        Title="PersoonToevoegen" Height="263.948" Width="480.258" Icon="pxl.png">
+        Title="Contact toevoegen" Height="263.948" Width="480.258" Icon="pxl.png">
     <Grid>
         <TextBox x:Name="textBoxNaam" HorizontalAlignment="Left" Height="23" Margin="50,91,0,0" TextWrapping="Wrap" Text="Naam" VerticalAlignment="Top" Width="170"/>
         <Label x:Name="label" Content="Naam:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,60,0,0" Width="43"/>

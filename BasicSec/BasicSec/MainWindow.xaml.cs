@@ -29,28 +29,28 @@ namespace BasicSec
         //String versturen naar server
         //layout
 
-        public List<string> personen = new List<string>(); //lijst van alle zenders en ontvangers
-        public TcpClient client = new TcpClient("192.168.1.1", 8888); //connecteren met de server
+        public List<string> contacten = new List<string>(); //lijst van alle zenders en ontvangers
+        //public TcpClient client = new TcpClient("192.168.1.1", 8888); //connecteren met de server
         public NetworkStream stream;
         public byte[] buf;
 
         public MainWindow()
         {
-            stream = client.GetStream();
+            //stream = client.GetStream();
 
-            if (!Directory.Exists(@".\Personen"))
+            if (!Directory.Exists(@".\Contacten"))
             {
-                Directory.CreateDirectory(@".\Personen");
+                Directory.CreateDirectory(@".\Contacten");
             }
 
-            Personen();
+            ContactenUpdate();
 
             InitializeComponent();
             
 
-            listBoxZenders.ItemsSource = personen;
+            listBoxZenders.ItemsSource = contacten;
             listBoxZenders.SelectedIndex = 0;
-            listBoxOntvangers.ItemsSource = personen;
+            listBoxOntvangers.ItemsSource = contacten;
             listBoxOntvangers.SelectedIndex = 1;
 
         }
@@ -72,20 +72,6 @@ namespace BasicSec
             }
         }
 
-        //Bestand selecteren
-        private void buttonBestand_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "txt files (*.txt)|*.txt";
-            openFileDialog1.Multiselect = false;
-            string filepath;
-            if (openFileDialog1.ShowDialog() == true)
-            {
-                filepath = openFileDialog1.FileName;
-                textBoxGekozenBestand.Text = File.ReadAllText(filepath);
-            }
-        }
-
         //encrypteren en decrypteren
         private void buttonEncrypterenDecrypteren_Click(object sender, RoutedEventArgs e)
         {
@@ -95,12 +81,12 @@ namespace BasicSec
             }
             else if (radioButtonEncrypteren.IsChecked == true)
             {
-               
+
             }
         }
 
 
-        public void NaarServer(string text)
+        public void NaarServerSturen(string text)
         {
             buf = Encoding.UTF8.GetBytes(text + "\n");
             stream.Write(buf, 0, text.Length + 1);
@@ -108,29 +94,69 @@ namespace BasicSec
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            stream.Close();
+            //stream.Close();
         }
 
-        public void Personen()
+        public void ContactenUpdate()
         {
-            foreach (string naam in Directory.GetDirectories(@".\Personen"))
+            foreach (string naam in Directory.GetDirectories(@".\Contacten"))
             {
-                personen.Add(naam.Remove(0, 11));
+                contacten.Add(naam.Remove(0, 12));
             }
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        void ContactenUpdaten(object sender, EventArgs e)
         {
-            PersoonToevoegen toevoegen = new PersoonToevoegen();
-            toevoegen.Show();
-            toevoegen.Closed += new EventHandler(Toevoegen_Closed);
-        }
-        void Toevoegen_Closed(object sender, EventArgs e)
-        {
-            personen.Clear();
-            Personen();
+            contacten.Clear();
+            ContactenUpdate();
             listBoxZenders.Items.Refresh();
             listBoxOntvangers.Items.Refresh();
         }
+
+        private void BoodschapOpenen_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "txt files (*.txt)|*.txt";
+            openFileDialog1.Multiselect = false;
+            string filepath;
+            if (openFileDialog1.ShowDialog() == true)
+            {
+                filepath = openFileDialog1.FileName;
+                textBoxBoodschap.Text = File.ReadAllText(filepath);
+            }
+        }
+
+        private void BoodschapOpslaan_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Text file (*.txt)|*.txt";
+            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            if (saveFileDialog.ShowDialog() == true)
+                File.WriteAllText(saveFileDialog.FileName, textBoxBoodschap.Text);
+        }
+
+        private void Afsluiten_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ContactToevoegen_Click(object sender, RoutedEventArgs e)
+        {
+            ContactenToevoegen nieuwContact = new ContactenToevoegen();
+            nieuwContact.Show();
+            nieuwContact.Closed += new EventHandler(ContactenUpdaten);
+        }
+
+        private void ContactVerwijderen_Click(object sender, RoutedEventArgs e)
+        {
+            if (contacten.Count > 0)
+            {
+                ContactVerwijderen wegContact = new ContactVerwijderen();
+                wegContact.Show();
+                wegContact.Closed += new EventHandler(ContactenUpdaten);
+            }
+            else MessageBox.Show("Maak eerst contacten aan");
+        }
+
     }
 }

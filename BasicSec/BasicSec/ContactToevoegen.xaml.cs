@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace BasicSec
 {
     /// <summary>
-    /// Interaction logic for PersoonToevoegen.xaml
+    /// Interaction logic for ContactenToevoegen.xaml
     /// </summary>
-    public partial class PersoonToevoegen : Window
+    public partial class ContactenToevoegen : Window
     {
-        public PersoonToevoegen()
+        public ContactenToevoegen()
         {
             InitializeComponent();
         }
@@ -30,17 +30,17 @@ namespace BasicSec
             string naam = textBoxNaam.Text;
             string ip = textBoxIP.Text;
 
-            if (Directory.Exists(@".\Personen\" + naam))
+            if (Directory.Exists(@".\Contacten\" + naam))
             {
-                MessageBox.Show("Deze persoon bestaat al");
+                MessageBox.Show("Dit contact bestaat al");
             }
             else
             {
-                Directory.CreateDirectory(@".\Personen\" + naam);
-                using (StreamWriter outputFile = new StreamWriter(@".\Personen\" + naam + @"\IP.txt"))
+                Directory.CreateDirectory(@".\Contacten\" + naam);
+                using (StreamWriter outputFile = new StreamWriter(@".\Contacten\" + naam + @"\IP.txt"))
                 {
                     outputFile.WriteLine(ip);
-                    MessageBox.Show("De persoon is goed toegevoegd!");
+                    MessageBox.Show("Dit contact is goed toegevoegd!");
                 }
             }
         }
