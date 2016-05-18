@@ -5,23 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BasicSec"
         mc:Ignorable="d"
-        Title="Crypto Program" Height="386.944" Width="312.185">
+        Title="Crypto Program" Height="422.944" Width="448.185" Closing="Window_Closing" Icon="pxl.png">
     <Grid Margin="0,0,2,8">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Label x:Name="labelZender" Content="Zender:" HorizontalAlignment="Left" Margin="23,18,0,0" VerticalAlignment="Top" Height="26" Width="50"/>
-        <Label x:Name="labelOntvanger" Content="Ontvanger:" HorizontalAlignment="Left" Margin="179,18,0,0" VerticalAlignment="Top" Height="26" Width="69"/>
+        <Label x:Name="labelOntvanger" Content="Ontvanger:" HorizontalAlignment="Left" Margin="23,172,0,0" VerticalAlignment="Top" Height="26" Width="69"/>
         <ListBox x:Name="listBoxZenders" HorizontalAlignment="Left" Height="100" Margin="23,49,0,0" VerticalAlignment="Top" Width="100"/>
-        <ListBox x:Name="listBoxOntvangers" HorizontalAlignment="Left" Height="100" Margin="179,49,0,0" VerticalAlignment="Top" Width="100"/>
-        <StackPanel HorizontalAlignment="Left" Height="30" Margin="181,154,0,0" VerticalAlignment="Top" Width="100">
+        <ListBox x:Name="listBoxOntvangers" HorizontalAlignment="Left" Height="100" Margin="23,203,0,0" VerticalAlignment="Top" Width="100"/>
+        <StackPanel HorizontalAlignment="Left" Height="30" Margin="27,332,0,0" VerticalAlignment="Top" Width="100">
             <RadioButton x:Name="radioButtonEncrypteren" Content="Encrypteren" IsChecked="True" Click="radioButton"/>
             <RadioButton x:Name="radioButtonDecrypteren" Content="Decrypteren" Click="radioButton"/>
         </StackPanel>
-        <Button x:Name="buttonBestand" Content="Kies een bestand" HorizontalAlignment="Left" Margin="23,154,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="buttonBestand_Click"/>
-        <Button x:Name="buttonEncrypterenDecrypteren" Content="Encrypteren" HorizontalAlignment="Left" Margin="23,272,0,0" VerticalAlignment="Top" Width="257" Height="20" Click="buttonEncrypterenDecrypteren_Click"/>
-        <Label x:Name="labelHashCheck" Content="Hash check: " HorizontalAlignment="Left" Margin="23,297,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.132,0.462" Height="26" Width="256" Visibility="Hidden"/>
-        <Label x:Name="label" Content="Gekozen bestand:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,184,0,0" Height="27" Width="110"/>
-        <TextBox x:Name="textBoxGekozenBestand" HorizontalAlignment="Left" Height="41" Margin="23,216,0,0" VerticalAlignment="Top" Width="258" BorderThickness="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled"/>
+        <Button x:Name="buttonBestand" Content="Kies een bestand" HorizontalAlignment="Left" Margin="300,10,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="buttonBestand_Click"/>
+        <Button x:Name="buttonEncrypterenDecrypteren" Content="Encrypteren" HorizontalAlignment="Left" Margin="154,319,0,0" VerticalAlignment="Top" Width="257" Height="20" Click="buttonEncrypterenDecrypteren_Click"/>
+        <Label x:Name="labelHashCheck" Content="Hash check: " HorizontalAlignment="Left" Margin="154,344,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.132,0.462" Height="26" Width="256" Visibility="Hidden"/>
+        <Label x:Name="label" Content="Voer uw boodschap in of" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="152,17,0,0" Height="27" Width="143"/>
+        <TextBox x:Name="textBoxGekozenBestand" HorizontalAlignment="Left" Height="254" Margin="152,49,0,0" VerticalAlignment="Top" Width="258" BorderThickness="1" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Auto" BorderBrush="Black" TextWrapping="Wrap" AcceptsReturn="True" />
     </Grid>
 </Window>
