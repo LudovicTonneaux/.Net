@@ -27,11 +27,7 @@ namespace BasicSec
     {
         //TODO
         //String versturen naar server
-        //hashcheck
         //layout
-        //IP koppelen aan namen -> txt bestand in hun map
-        //Personen kunnen Toevoegen
-
 
         public List<string> personen = new List<string>(); //lijst van alle zenders en ontvangers
         public TcpClient client = new TcpClient("192.168.1.1", 8888); //connecteren met de server
@@ -41,6 +37,11 @@ namespace BasicSec
         public MainWindow()
         {
             stream = client.GetStream();
+
+            if (!Directory.Exists(@".\Personen"))
+            {
+                Directory.CreateDirectory(@".\Personen");
+            }
 
             Personen();
 
@@ -91,11 +92,10 @@ namespace BasicSec
             if (radioButtonDecrypteren.IsChecked == true)
             {
 
-
             }
             else if (radioButtonEncrypteren.IsChecked == true)
             {
-                
+               
             }
         }
 
@@ -117,6 +117,20 @@ namespace BasicSec
             {
                 personen.Add(naam.Remove(0, 11));
             }
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            PersoonToevoegen toevoegen = new PersoonToevoegen();
+            toevoegen.Show();
+            toevoegen.Closed += new EventHandler(Toevoegen_Closed);
+        }
+        void Toevoegen_Closed(object sender, EventArgs e)
+        {
+            personen.Clear();
+            Personen();
+            listBoxZenders.Items.Refresh();
+            listBoxOntvangers.Items.Refresh();
         }
     }
 }
