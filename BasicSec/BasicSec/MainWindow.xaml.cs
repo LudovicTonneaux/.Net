@@ -44,10 +44,9 @@ namespace BasicSec
                 Directory.CreateDirectory(@".\Contacten");
             }
 
-            ContactenUpdate();
-
             InitializeComponent();
-            
+
+            ContactenUpdate();
 
             listBoxZenders.ItemsSource = contacten;
             listBoxZenders.SelectedIndex = 0;
@@ -104,6 +103,19 @@ namespace BasicSec
             {
                 contacten.Add(naam.Remove(0, 12));
             }
+            buttonCheck();
+        }
+
+        public void buttonCheck()
+        {
+            if (contacten.Count > 0)
+            {
+                listBoxZenders.SelectedIndex = 0;
+                listBoxOntvangers.SelectedIndex = 0;
+                buttonEncrypterenDecrypteren.IsEnabled = true;
+            }
+            else buttonEncrypterenDecrypteren.IsEnabled = false;
+
         }
 
         void ContactenUpdaten(object sender, EventArgs e)
