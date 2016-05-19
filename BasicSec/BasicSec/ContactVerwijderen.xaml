@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:BasicSec"
         mc:Ignorable="d"
         Title="Contact verwijderen" Height="300" Width="300" Icon="pxl.png">
-    <Grid>
-        <ListBox x:Name="listBoxContacten" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="89,57,0,0" SelectedIndex="0"/>
-        <Button x:Name="buttonVerwijderen" Content="Verwijderen" HorizontalAlignment="Left" Margin="101,182,0,0" VerticalAlignment="Top" Width="75" Click="buttonVerwijderen_Click"/>
+    <Grid Background="#FF00FF68">
+        <ListBox x:Name="listBoxContacten" HorizontalAlignment="Left" Height="125" VerticalAlignment="Top" Width="141" Margin="76,41,0,0" SelectedIndex="0" BorderThickness="1" BorderBrush="Black"/>
+        <Button x:Name="buttonVerwijderen" Content="Verwijderen" HorizontalAlignment="Left" Margin="88,195,0,0" VerticalAlignment="Top" Width="116" Click="buttonVerwijderen_Click" FontWeight="ExtraBlack" BorderThickness="1" BorderBrush="Black" Height="42"/>
 
     </Grid>
 </Window>

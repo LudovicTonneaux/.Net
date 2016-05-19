@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:BasicSec"
         mc:Ignorable="d"
         Title="Contact toevoegen" Height="263.948" Width="480.258" Icon="pxl.png">
-    <Grid>
-        <TextBox x:Name="textBoxNaam" HorizontalAlignment="Left" Height="23" Margin="50,91,0,0" TextWrapping="Wrap" Text="Naam" VerticalAlignment="Top" Width="170"/>
-        <Label x:Name="label" Content="Naam:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,60,0,0" Width="43"/>
-        <Label x:Name="label1" Content="IP:" HorizontalAlignment="Left" Margin="273,60,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.882,-0.478" Width="40"/>
-        <TextBox x:Name="textBoxIP" HorizontalAlignment="Left" Height="23" Margin="273,91,0,0" TextWrapping="Wrap" Text="xxx.xxx.xxx.xxx" VerticalAlignment="Top" Width="170"/>
-        <Button x:Name="button" Content="Toevoegen" HorizontalAlignment="Center" Margin="10,153,0,0" VerticalAlignment="Top" Width="156" RenderTransformOrigin="1.081,0.729" Height="56" HorizontalContentAlignment="Center" Click="button_Click"/>
+    <Grid Background="#FF00FF68">
+        <TextBox x:Name="textBoxNaam" HorizontalAlignment="Left" Height="23" Margin="50,76,0,0" TextWrapping="Wrap" Text="Naam" VerticalAlignment="Top" Width="170" BorderBrush="Black"/>
+        <Label x:Name="label" Content="Naam:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,45,0,0" Width="43" FontWeight="SemiBold"/>
+        <Label x:Name="label1" Content="IP:" HorizontalAlignment="Left" Margin="273,45,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.882,-0.478" Width="40" FontWeight="SemiBold"/>
+        <TextBox x:Name="textBoxIP" HorizontalAlignment="Left" Height="23" Margin="273,76,0,0" TextWrapping="Wrap" Text="xxx.xxx.xxx.xxx" VerticalAlignment="Top" Width="170" BorderBrush="Black"/>
+        <Button x:Name="button" Content="Toevoegen" HorizontalAlignment="Center" Margin="163,138,153,0" VerticalAlignment="Top" Width="156" RenderTransformOrigin="1.081,0.729" Height="56" HorizontalContentAlignment="Center" Click="button_Click" FontWeight="ExtraBlack" BorderBrush="Black"/>
 
     </Grid>
 </Window>

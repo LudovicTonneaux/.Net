@@ -26,9 +26,6 @@ namespace BasicSec
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        //TODO
-        //String versturen naar server
-        //layout
 
         public List<string> contacten = new List<string>(); //lijst van alle zenders en ontvangers
         //public TcpClient client = new TcpClient("192.168.1.1", 8888); //connecteren met de server

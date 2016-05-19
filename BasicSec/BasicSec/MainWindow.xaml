@@ -7,35 +7,35 @@
         xmlns:local="clr-namespace:BasicSec"
         mc:Ignorable="d"
         Title="Crypto Program" Height="482.094" Width="448.185" Closing="Window_Closing" Icon="pxl.png">
-    <DockPanel >
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_Boodschap"  >
+    <DockPanel Background="#FF00FF68" >
+        <Menu DockPanel.Dock="Top" Background="{x:Null}" Margin="0,0,293,0">
+            <MenuItem Header="_Boodschap" Background="White" Foreground="Black" BorderBrush="Black"  >
                 <MenuItem x:Name="BoodschapOpenen" Header="_Openen" Click="BoodschapOpenen_Click"/>
                 <MenuItem x:Name="BoodschapOpslaan" Header="_Opslaan" Click="BoodschapOpslaan_Click"/>
                 <MenuItem x:Name="Afsluiten" Header="_Afsluiten" Click="Afsluiten_Click"/>
             </MenuItem>
-            <MenuItem Header="_Contact" >
+            <MenuItem Header="_Contact" Background="White" Foreground="Black" BorderBrush="Black" >
                 <MenuItem x:Name="ContactToevoegen" Header="_Toevoegen" Click="ContactToevoegen_Click"/>
                 <MenuItem x:Name="ContactVerwijderen" Header="_Verwijderen" Click="ContactVerwijderen_Click"/>
             </MenuItem>
         </Menu>
-        <Grid Margin="0,0,2,8" DockPanel.Dock="Bottom">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Label x:Name="labelZender" Content="Zender:" HorizontalAlignment="Left" Margin="24,36,0,0" VerticalAlignment="Top" Height="26" Width="50"/>
-        <Label x:Name="labelOntvanger" Content="Ontvanger:" HorizontalAlignment="Left" Margin="24,169,0,0" VerticalAlignment="Top" Height="26" Width="69"/>
-        <ListBox x:Name="listBoxZenders" HorizontalAlignment="Left" Height="100" Margin="24,67,0,0" VerticalAlignment="Top" Width="100"/>
-        <ListBox x:Name="listBoxOntvangers" HorizontalAlignment="Left" Height="100" Margin="24,200,0,0" VerticalAlignment="Top" Width="100"/>
-        <StackPanel HorizontalAlignment="Left" Height="30" Margin="28,330,0,0" VerticalAlignment="Top" Width="100" MinHeight="40">
-            <RadioButton x:Name="radioButtonEncrypteren" Content="Encrypteren" IsChecked="True" Click="radioButton"/>
-            <RadioButton x:Name="radioButtonDecrypteren" Content="Decrypteren" Click="radioButton"/>
-        </StackPanel>
-        <Button x:Name="buttonEncrypterenDecrypteren" Content="Encrypteren" HorizontalAlignment="Left" Margin="153,362,0,0" VerticalAlignment="Top" Width="258" Height="20" Click="buttonEncrypterenDecrypteren_Click"/>
-        <Label x:Name="labelHashCheck" Content="Hash check: " HorizontalAlignment="Left" Margin="153,387,0,-3" VerticalAlignment="Top" RenderTransformOrigin="0.132,0.462" Height="26" Width="256" Visibility="Hidden"/>
-        <Label x:Name="label" Content="Voer uw boodschap in of kies een tekstbestand" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="153,35,0,0" Height="27" Width="275"/>
-        <TextBox x:Name="textBoxBoodschap" HorizontalAlignment="Left" Height="290" Margin="153,67,0,0" VerticalAlignment="Top" Width="258" BorderThickness="1" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Auto" BorderBrush="Black" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True"/>
-        <!--<DockPanel x:Name="___No_Name_" HorizontalAlignment="Left" Height="18" LastChildFill="False" VerticalAlignment="Top" Width="438" Margin="10" >
+        <Grid Margin="0,0,2,8" DockPanel.Dock="Bottom" Background="#FF00FF68">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="labelZender" Content="Zender:" HorizontalAlignment="Left" Margin="24,36,0,0" VerticalAlignment="Top" Height="26" Width="100" FontWeight="SemiBold"/>
+            <Label x:Name="labelOntvanger" Content="Ontvanger:" HorizontalAlignment="Left" Margin="24,169,0,0" VerticalAlignment="Top" Height="26" Width="100" FontWeight="SemiBold"/>
+            <ListBox x:Name="listBoxZenders" HorizontalAlignment="Left" Height="100" Margin="24,67,0,0" VerticalAlignment="Top" Width="100" BorderBrush="Black" BorderThickness="1"/>
+            <ListBox x:Name="listBoxOntvangers" HorizontalAlignment="Left" Height="100" Margin="24,200,0,0" VerticalAlignment="Top" Width="100" BorderThickness="1"/>
+            <StackPanel HorizontalAlignment="Left" Height="30" Margin="28,330,0,0" VerticalAlignment="Top" Width="100" MinHeight="40">
+                <RadioButton x:Name="radioButtonEncrypteren" Content="Encrypteren" IsChecked="True" Click="radioButton" BorderBrush="Black" FontWeight="SemiBold"/>
+                <RadioButton x:Name="radioButtonDecrypteren" Content="Decrypteren" Click="radioButton" BorderBrush="Black" FontWeight="SemiBold"/>
+            </StackPanel>
+            <Button x:Name="buttonEncrypterenDecrypteren" Content="Encrypteren" HorizontalAlignment="Left" Margin="153,362,0,0" VerticalAlignment="Top" Width="258" Height="20" Click="buttonEncrypterenDecrypteren_Click" Background="White" BorderBrush="Black" FontWeight="ExtraBlack"/>
+            <Label x:Name="labelHashCheck" Content="Hash check: " HorizontalAlignment="Left" Margin="153,387,0,-3" VerticalAlignment="Top" RenderTransformOrigin="0.132,0.462" Height="26" Width="256" Visibility="Hidden"/>
+            <Label x:Name="label" Content="Voer uw boodschap in of kies een tekstbestand" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="153,35,0,0" Height="27" Width="275" FontWeight="SemiBold"/>
+            <TextBox x:Name="textBoxBoodschap" HorizontalAlignment="Left" Height="290" Margin="153,67,0,0" VerticalAlignment="Top" Width="258" BorderThickness="1" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Auto" BorderBrush="Black" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True"/>
+            <!--<DockPanel x:Name="___No_Name_" HorizontalAlignment="Left" Height="18" LastChildFill="False" VerticalAlignment="Top" Width="438" Margin="10" >
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_Boodschap"  >
                     <MenuItem x:Name="BoodschapOpenen" Header="_Openen" Click="BoodschapOpenen_Click"/>
@@ -48,6 +48,6 @@
                 </MenuItem>
             </Menu>
         </DockPanel>-->
-    </Grid>
+        </Grid>
     </DockPanel>
 </Controls:MetroWindow>
