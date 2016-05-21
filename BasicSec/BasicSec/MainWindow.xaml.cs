@@ -28,13 +28,13 @@ namespace BasicSec
     {
 
         public List<string> contacten = new List<string>(); //lijst van alle zenders en ontvangers
-        //public TcpClient client = new TcpClient("192.168.1.1", 8888); //connecteren met de server
+        public TcpClient client = new TcpClient("192.168.1.1", 8888); //connecteren met de server
         public NetworkStream stream;
         public byte[] buf;
 
         public MainWindow()
         {
-            //stream = client.GetStream();
+            stream = client.GetStream();
 
             if (!Directory.Exists(@".\Contacten"))
             {
@@ -74,14 +74,55 @@ namespace BasicSec
         {
             if (radioButtonDecrypteren.IsChecked == true)
             {
+                if (File.Exists(@".\Boodschap.txt"))
+                {
+                    File.Delete(@".\Boodschap.txt");
+                }
+
+                StreamWriter outputFile = new StreamWriter(@".\Boodschap.txt");
+                outputFile.WriteLine(textBoxBoodschap.Text);
+                outputFile.Close();
+                outputFile.Dispose();
+
+                string sourceip = GetIP(listBoxZenders.SelectedItem.ToString());
+                string destinationip = GetIP(listBoxOntvangers.SelectedItem.ToString());
+                string filelocation = System.IO.Path.GetFullPath(@".\Boodschap.txt");
+                string sourceusername = listBoxZenders.SelectedItem.ToString();
+                string destinationusername = listBoxOntvangers.SelectedItem.ToString();
+
+                NaarServerSturen(sourceip + ";" + destinationip + ";" + filelocation + ";" + sourceusername + ";" + destinationusername);
 
             }
             else if (radioButtonEncrypteren.IsChecked == true)
             {
+                if (File.Exists(@".\Boodschap.txt"))
+                {
+                    File.Delete(@".\Boodschap.txt");
+                }
 
+                StreamWriter outputFile = new StreamWriter(@".\Boodschap.txt");
+                outputFile.WriteLine(textBoxBoodschap.Text);
+                outputFile.Close();
+                outputFile.Dispose();
+
+                string sourceip = GetIP(listBoxZenders.SelectedItem.ToString());
+                string destinationip = GetIP(listBoxOntvangers.SelectedItem.ToString());
+                string filelocation = System.IO.Path.GetFullPath(@".\Boodschap.txt");
+                string sourceusername = listBoxZenders.SelectedItem.ToString();
+                string destinationusername = listBoxOntvangers.SelectedItem.ToString();
+
+                NaarServerSturen(sourceip + ";" + destinationip + ";" + filelocation + ";" + sourceusername + ";" + destinationusername);
             }
         }
 
+        public string GetIP(string naam)
+        {
+            StreamReader reader = new StreamReader(@".\Contacten\" + naam + @"\IP.txt");
+            string ip = reader.ReadLine();
+            reader.Close();
+            reader.Dispose();
+            return ip;
+        }
 
         public void NaarServerSturen(string text)
         {
@@ -91,7 +132,7 @@ namespace BasicSec
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //stream.Close();
+            stream.Close();
         }
 
         public void ContactenUpdate()
@@ -105,10 +146,10 @@ namespace BasicSec
 
         public void buttonCheck()
         {
-            if (contacten.Count > 0)
+            if (contacten.Count > 1)
             {
                 listBoxZenders.SelectedIndex = 0;
-                listBoxOntvangers.SelectedIndex = 0;
+                listBoxOntvangers.SelectedIndex = 1;
                 buttonEncrypterenDecrypteren.IsEnabled = true;
             }
             else buttonEncrypterenDecrypteren.IsEnabled = false;
