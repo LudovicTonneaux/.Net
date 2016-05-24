@@ -18,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using MahApps.Metro.Controls;
 
 namespace BasicSec
@@ -35,17 +36,21 @@ namespace BasicSec
         public MainWindow()
         {
             InitializeComponent();
-            Thread thread = Thread.CurrentThread;
-            this.DataContext = new
-            {
-                ThreadId = thread.ManagedThreadId
-            };
-             thread = new Thread(() =>
-            {
-                TcpServer server = new TcpServer(8889);
-                System.Windows.Threading.Dispatcher.Run();
-            });
-
+            //Thread thread = Thread.CurrentThread;
+            //this.DataContext = new
+            //{
+            //    ThreadId = thread.ManagedThreadId
+            //};
+           
+                Thread thread = new Thread(() =>
+                {
+                    TcpServer server = new TcpServer(8889, listStatus);
+                    //System.Windows.Threading.Dispatcher.Run();
+                });
+                thread.Start();
+           
+                
+            
             if (!Directory.Exists(@".\Contacten"))
             {
                 Directory.CreateDirectory(@".\Contacten");
@@ -252,5 +257,10 @@ namespace BasicSec
             else MessageBox.Show("Maak eerst contacten aan");
         }
 
+        private void MetroWindow_Closed(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
+            Environment.Exit(0);
+        }
     }
 }

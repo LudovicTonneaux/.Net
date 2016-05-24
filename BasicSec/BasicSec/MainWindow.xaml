@@ -6,8 +6,8 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:BasicSec"
         mc:Ignorable="d"
-        Title="Crypto Program" Height="482.094" Width="448.185" Closing="Window_Closing" Icon="pxl.png">
-    <DockPanel  >
+        Title="Crypto Program" Height="600" Width="1024" Closing="Window_Closing" Icon="pxl.png" Closed="MetroWindow_Closed">
+    <DockPanel>
         <Menu DockPanel.Dock="Top" Background="{x:Null}" Margin="0,0,293,0">
             <MenuItem Header="_Boodschap" Background="White" Foreground="Black" BorderBrush="Black"  >
                 <MenuItem x:Name="BoodschapOpenen" Header="_Openen" Click="BoodschapOpenen_Click"/>
@@ -22,21 +22,22 @@
         <Grid Margin="0,0,2,8" DockPanel.Dock="Bottom" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
+
             </Grid.ColumnDefinitions>
             <Label x:Name="labelZender" Content="Zender:" HorizontalAlignment="Left" Margin="24,36,0,0" VerticalAlignment="Top" Height="26" Width="100" FontWeight="SemiBold"/>
-            <Label x:Name="statusLabel" Content="Status:" HorizontalAlignment="Left" Margin="24,213,0,0" VerticalAlignment="Top" Height="26" Width="100" FontWeight="SemiBold"/>
-            <ListBox x:Name="listBoxZenders" HorizontalAlignment="Left" Height="123" Margin="24,67,0,0" VerticalAlignment="Top" Width="100" BorderBrush="Black" BorderThickness="1"/>
-            <TextBox x:Name="listStatus" HorizontalAlignment="Left" Height="100" Margin="24,244,0,0" VerticalAlignment="Top" Width="100" BorderThickness="1" IsEnabled="False"/>
-          
+            <Label x:Name="statusLabel" Content="Status:" HorizontalAlignment="Left" Margin="24,330,0,0" VerticalAlignment="Top" Height="26" Width="100" FontWeight="SemiBold"/>
+            <ListBox x:Name="listBoxZenders" HorizontalAlignment="Left" Height="258" Margin="10,67,0,0" VerticalAlignment="Top" Width="129" BorderBrush="Black" BorderThickness="1"/>
+            <TextBox x:Name="listStatus" HorizontalAlignment="Left" Height="113" Margin="24,361,0,0" VerticalAlignment="Top" Width="968" BorderThickness="1" IsEnabled="False" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"/>
+
             <!--<StackPanel HorizontalAlignment="Left" Height="30" Margin="28,330,0,0" VerticalAlignment="Top" Width="100" MinHeight="40">
                 <RadioButton x:Name="radioButtonEncrypteren" Content="Encrypteren" IsChecked="True" Click="radioButton" BorderBrush="Black" FontWeight="SemiBold"/>
                 <RadioButton x:Name="radioButtonDecrypteren" Content="Decrypteren" Click="radioButton" BorderBrush="Black" FontWeight="SemiBold"/>
             </StackPanel>-->
-            <Button x:Name="buttonEncrypterenDecrypteren" Content="Versturen" HorizontalAlignment="Left" Margin="153,362,0,0" VerticalAlignment="Top" Width="258" Height="20" Click="buttonEncrypterenDecrypteren_Click" Background="White" BorderBrush="Black" FontWeight="ExtraBlack"/>
-            <Label x:Name="labelHashCheck" Content="Hash check: " HorizontalAlignment="Left" Margin="153,387,0,-3" VerticalAlignment="Top" RenderTransformOrigin="0.132,0.462" Height="26" Width="256" Visibility="Hidden"/>
+            <Button x:Name="buttonEncrypterenDecrypteren" Content="Versturen" HorizontalAlignment="Left" Margin="385,496,0,0" VerticalAlignment="Top" Width="258" Height="20" Click="buttonEncrypterenDecrypteren_Click" Background="White" BorderBrush="Black" FontWeight="ExtraBlack"/>
+            <Label x:Name="labelHashCheck" Content="Hash check: " HorizontalAlignment="Left" Margin="385,387,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.132,0.462" Height="26" Width="256" Visibility="Hidden"/>
             <Label x:Name="label" Content="Voer uw boodschap in of kies een tekstbestand" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="153,35,0,0" Height="27" Width="275" FontWeight="SemiBold"/>
-            <TextBox x:Name="textBoxBoodschap" HorizontalAlignment="Left" Height="290" Margin="153,67,0,0" VerticalAlignment="Top" Width="258" BorderThickness="1" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Auto" BorderBrush="Black" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True"/>
-           
+            <TextBox x:Name="textBoxBoodschap" HorizontalAlignment="Left" Height="258" Margin="153,67,0,0" VerticalAlignment="Top" Width="839" BorderThickness="1" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Auto" BorderBrush="Black" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True"/>
+
         </Grid>
     </DockPanel>
 </Controls:MetroWindow>
