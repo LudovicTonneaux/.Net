@@ -55,11 +55,7 @@ namespace BasicSec
                            ));
                     client.Close();
                 }
-                   
-
-
-
-
+                  
 
                     // to write something back.
                     // sWriter.WriteLine("Meaningfull things here");

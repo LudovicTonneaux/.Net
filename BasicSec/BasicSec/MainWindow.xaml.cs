@@ -135,13 +135,7 @@ namespace BasicSec
             string path=  Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             
         
-            string textPath = path + "\\CRYPTO\\CryptoSavedFile" + 0 + ".txt";
-            int i = 1;
-            while (File.Exists(textPath))
-            {
-                textPath = path + "\\CryptoSavedFile" + i + ".txt";
-                i++;
-            }
+            string textPath = path + "\\CRYPTO\\CryptoSavedChatFile.txt";
             File.WriteAllText(textPath, textBoxBoodschap.Text);
             if (textBoxBoodschap.IsEnabled == true)
             {
