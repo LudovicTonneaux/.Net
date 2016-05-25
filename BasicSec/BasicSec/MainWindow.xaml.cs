@@ -28,7 +28,7 @@ namespace BasicSec
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        
+        private string filepath=null;
         private List<string> contacten = new List<string>(); //lijst van alle zenders en ontvangers
        private  NetworkStream stream;
         private byte[] buf;
@@ -36,43 +36,25 @@ namespace BasicSec
         public MainWindow()
         {
             InitializeComponent();
-            //Thread thread = Thread.CurrentThread;
-            //this.DataContext = new
-            //{
-            //    ThreadId = thread.ManagedThreadId
-            //};
-           
+     
                 Thread thread = new Thread(() =>
                 {
                     TcpServer server = new TcpServer(8889, listStatus);
                     //System.Windows.Threading.Dispatcher.Run();
                 });
                 thread.Start();
-           
-                
-            
+ 
             if (!Directory.Exists(@".\Contacten"))
             {
                 Directory.CreateDirectory(@".\Contacten");
             }
-            
-            ContactenUpdate();
-        
+                        ContactenUpdate();       
             listBoxZenders.ItemsSource = contacten;
             listBoxZenders.SelectedIndex = 0;
             //listBoxOntvangers.ItemsSource = contacten;
-            //listBoxOntvangers.SelectedIndex = 1;
-            
-           // IPHostEntry ipHost = Dns.GetHostEntry(Dns.GetHostName());
-            
-           
+            //listBoxOntvangers.SelectedIndex = 1;         
+           // IPHostEntry ipHost = Dns.GetHostEntry(Dns.GetHostName());       
         }
-
-       
-               
-                
-
-
 
         //RadioButtons
         //private void radioButton(object sender, RoutedEventArgs e)
@@ -92,7 +74,7 @@ namespace BasicSec
         //}
 
         //encrypteren en decrypteren
-        private void buttonEncrypterenDecrypteren_Click(object sender, RoutedEventArgs e)
+        private void buttonSend_Click(object sender, RoutedEventArgs e)
         {
             //    if (radioButtonDecrypteren.IsChecked == true)
             //    {
@@ -100,20 +82,13 @@ namespace BasicSec
             //        {
             //            File.Delete(@".\Boodschap.txt");
             //        }
-
             //        StreamWriter outputFile = new StreamWriter(@".\Boodschap.txt");
             //        outputFile.WriteLine(textBoxBoodschap.Text);
             //        outputFile.Close();
             //        outputFile.Dispose();
-
-            string sourceip = GetIP(listBoxZenders.SelectedItem.ToString());
             //string destinationip = GetIP(listBoxOntvangers.SelectedItem.ToString());
-            string filelocation = System.IO.Path.GetFullPath(@".\Boodschap.txt");
-            string destinationusername = listBoxZenders.SelectedItem.ToString();
             //string destinationusername = listBoxOntvangers.SelectedItem.ToString();
-
             //        NaarServerSturen(sourceip + ";" + destinationip + ";" + filelocation + ";" + sourceusername + ";" + destinationusername);
-
             //    }
             //    else if (radioButtonEncrypteren.IsChecked == true)
             //    {
@@ -132,23 +107,20 @@ namespace BasicSec
             //        string filelocation = System.IO.Path.GetFullPath(@".\Boodschap.txt");
             //        string sourceusername = listBoxZenders.SelectedItem.ToString();
             //        string destinationusername = listBoxOntvangers.SelectedItem.ToString();
-            string path=  Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            
-        
+            //string filelocation = System.IO.Path.GetFullPath(@".\Boodschap.txt");
+            //string destinationusername = listBoxZenders.SelectedItem.ToString();
+            string sourceip = GetIP(listBoxZenders.SelectedItem.ToString());
+            string path=  Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);    
             string textPath = path + "\\CRYPTO\\CryptoSavedChatFile.txt";
             File.WriteAllText(textPath, textBoxBoodschap.Text);
             if (textBoxBoodschap.IsEnabled == true)
             {
-                NaarServerSturen(sourceip + ";" + "192.168.1.55" + ";" + filelocation + ";" + "ik" + ";" +
-                                 destinationusername);
+                NaarServerSturen(sourceip + ";" + "192.168.1.55" + ";" + textPath);
             }
             else if (textBoxBoodschap.IsEnabled==false)
             {
-                NaarServerSturen(sourceip + ";" + "192.168.1.55" + ";" + textPath + ";" + "ik" + ";" +
-                                 destinationusername);
-            }
-            
-               
+                NaarServerSturen(sourceip + ";" + "192.168.1.55" + ";" + filepath );
+            }        
             }
 
         public string GetIP(string naam)
@@ -162,7 +134,7 @@ namespace BasicSec
 
         public void NaarServerSturen(string text)
         {
-             TcpClient client = new TcpClient("127.0.0.1", 8889); //connecteren met de server
+             TcpClient client = new TcpClient("127.0.0.1", 8888); //connecteren met de server
           
          
             stream = client.GetStream();
@@ -210,7 +182,7 @@ namespace BasicSec
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             //openFileDialog1.Filter = "txt files (*.txt)|*.txt";
             openFileDialog1.Multiselect = false;
-            string filepath;
+             
             if (openFileDialog1.ShowDialog() == true)
             {
                 filepath = openFileDialog1.FileName;

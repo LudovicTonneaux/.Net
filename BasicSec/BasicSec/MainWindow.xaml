@@ -33,7 +33,7 @@
                 <RadioButton x:Name="radioButtonEncrypteren" Content="Encrypteren" IsChecked="True" Click="radioButton" BorderBrush="Black" FontWeight="SemiBold"/>
                 <RadioButton x:Name="radioButtonDecrypteren" Content="Decrypteren" Click="radioButton" BorderBrush="Black" FontWeight="SemiBold"/>
             </StackPanel>-->
-            <Button x:Name="buttonEncrypterenDecrypteren" Content="Versturen" HorizontalAlignment="Left" Margin="385,496,0,0" VerticalAlignment="Top" Width="258" Height="20" Click="buttonEncrypterenDecrypteren_Click" Background="White" BorderBrush="Black" FontWeight="ExtraBlack"/>
+            <Button x:Name="buttonEncrypterenDecrypteren" Content="Versturen" HorizontalAlignment="Left" Margin="385,496,0,0" VerticalAlignment="Top" Width="258" Height="20" Click="buttonSend_Click" Background="White" BorderBrush="Black" FontWeight="ExtraBlack"/>
             <Label x:Name="labelHashCheck" Content="Hash check: " HorizontalAlignment="Left" Margin="385,387,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.132,0.462" Height="26" Width="256" Visibility="Hidden"/>
             <Label x:Name="label" Content="Voer uw boodschap in of kies een tekstbestand" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="153,35,0,0" Height="27" Width="275" FontWeight="SemiBold"/>
             <TextBox x:Name="textBoxBoodschap" HorizontalAlignment="Left" Height="258" Margin="153,67,0,0" VerticalAlignment="Top" Width="839" BorderThickness="1" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Auto" BorderBrush="Black" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True"/>
