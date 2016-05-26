@@ -115,11 +115,11 @@ namespace BasicSec
             File.WriteAllText(textPath, textBoxBoodschap.Text);
             if (textBoxBoodschap.IsEnabled == true)
             {
-                NaarServerSturen(sourceip + ";" + "192.168.1.55" + ";" + textPath);
+                NaarServerSturen(sourceip +  ";" + textPath);
             }
             else if (textBoxBoodschap.IsEnabled==false)
             {
-                NaarServerSturen(sourceip + ";" + "192.168.1.55" + ";" + filepath );
+                NaarServerSturen(sourceip +";" + filepath );
             }        
             }
 
@@ -202,6 +202,7 @@ namespace BasicSec
 
         private void Afsluiten_Click(object sender, RoutedEventArgs e)
         {
+            
             this.Close();
         }
 
@@ -225,6 +226,7 @@ namespace BasicSec
 
         private void MetroWindow_Closed(object sender, EventArgs e)
         {
+            NaarServerSturen("EXIT");
             Application.Current.Shutdown();
             Environment.Exit(0);
         }

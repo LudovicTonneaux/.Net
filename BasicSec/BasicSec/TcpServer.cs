@@ -45,12 +45,15 @@ namespace BasicSec
                     {
                         sData += sReader.ReadLine();
                     }
-                    
-                        Application.Current.Dispatcher.Invoke(
+                    if (sData.Equals("De text hash is OK"))
+                    {
+
+                    }
+                    Application.Current.Dispatcher.Invoke(
                        DispatcherPriority.Background,
                        new Action(() =>
                            // shows content on the console.
-                           statusTextBox.Text =  System.DateTime.Now + sData + Environment.NewLine + statusTextBox.Text
+                           statusTextBox.Text =  System.DateTime.Now +": "+ sData + Environment.NewLine + statusTextBox.Text
 
                            ));
                     client.Close();
