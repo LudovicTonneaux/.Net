@@ -112,9 +112,10 @@ namespace BasicSec
             string sourceip = GetIP(listBoxZenders.SelectedItem.ToString());
             string path=  Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);    
             string textPath = path + "\\CRYPTO\\CryptoSavedChatFile.txt";
-            File.WriteAllText(textPath, textBoxBoodschap.Text);
+            
             if (textBoxBoodschap.IsEnabled == true)
             {
+                File.WriteAllText(textPath, textBoxBoodschap.Text);
                 NaarServerSturen(sourceip +  ";" + textPath);
             }
             else if (textBoxBoodschap.IsEnabled==false)
