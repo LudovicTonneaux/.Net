@@ -110,8 +110,11 @@ namespace BasicSec
             //string filelocation = System.IO.Path.GetFullPath(@".\Boodschap.txt");
             //string destinationusername = listBoxZenders.SelectedItem.ToString();
             string sourceip = GetIP(listBoxZenders.SelectedItem.ToString());
-            string path=  Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);    
-            string textPath = "./CryptoSavedChatFile.txt";
+                  
+            
+
+
+            string textPath = System.IO.Path.GetFullPath("./CryptoSavedChatFile.txt");
             
             if (textBoxBoodschap.IsEnabled == true)
             {

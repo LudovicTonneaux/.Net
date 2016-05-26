@@ -19,6 +19,7 @@ namespace BasicSec
         private TcpListener _server;
         private AutoResetEvent connectionWaitHandle = new AutoResetEvent(false);
         private Boolean _isRunning;
+       private string path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
 
         public TcpServer(int port,TextBox statusTextBox,TextBox textTextBox)
         {
@@ -36,6 +37,7 @@ namespace BasicSec
                 TcpClient client = _server.AcceptTcpClient();
                 StreamReader sReader = new StreamReader(client.GetStream(), Encoding.UTF8);
                 
+                
                 String sData = null;
 
                 while (client.Connected)
@@ -52,7 +54,7 @@ namespace BasicSec
                       new Action(() =>
                           // shows content on the console.
                           
-                          textTextBox.Text = File.ReadAllText("./CryptoSavedChatFile.txt")
+                          textTextBox.Text = File.ReadAllText(path+"\\CryptoSavedChatFile.txt")
 
                           ));
                     }
@@ -65,7 +67,6 @@ namespace BasicSec
                            ));
                     client.Close();
                 }
-                  
 
                     // to write something back.
                     // sWriter.WriteLine("Meaningfull things here");
