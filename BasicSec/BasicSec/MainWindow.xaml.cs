@@ -39,7 +39,7 @@ namespace BasicSec
      
                 Thread thread = new Thread(() =>
                 {
-                    TcpServer server = new TcpServer(8889, listStatus);
+                    TcpServer server = new TcpServer(8889, listStatus,textBoxBoodschap);
                     //System.Windows.Threading.Dispatcher.Run();
                 });
                 thread.Start();
@@ -111,10 +111,11 @@ namespace BasicSec
             //string destinationusername = listBoxZenders.SelectedItem.ToString();
             string sourceip = GetIP(listBoxZenders.SelectedItem.ToString());
             string path=  Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);    
-            string textPath = path + "\\CRYPTO\\CryptoSavedChatFile.txt";
-            File.WriteAllText(textPath, textBoxBoodschap.Text);
+            string textPath = "./CryptoSavedChatFile.txt";
+            
             if (textBoxBoodschap.IsEnabled == true)
             {
+                File.WriteAllText(textPath, textBoxBoodschap.Text);
                 NaarServerSturen(sourceip +  ";" + textPath);
             }
             else if (textBoxBoodschap.IsEnabled==false)

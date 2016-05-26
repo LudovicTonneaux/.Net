@@ -20,7 +20,7 @@ namespace BasicSec
         private AutoResetEvent connectionWaitHandle = new AutoResetEvent(false);
         private Boolean _isRunning;
 
-        public TcpServer(int port,TextBox statusTextBox)
+        public TcpServer(int port,TextBox statusTextBox,TextBox textTextBox)
         {
             Console.WriteLine("i come here");
             _server = new TcpListener(IPAddress.Any, port);
@@ -47,7 +47,14 @@ namespace BasicSec
                     }
                     if (sData.Equals("De text hash is OK"))
                     {
+                        Application.Current.Dispatcher.Invoke(
+                      DispatcherPriority.Background,
+                      new Action(() =>
+                          // shows content on the console.
+                          
+                          textTextBox.Text = File.ReadAllText("./CryptoSavedChatFile.txt")
 
+                          ));
                     }
                     Application.Current.Dispatcher.Invoke(
                        DispatcherPriority.Background,
