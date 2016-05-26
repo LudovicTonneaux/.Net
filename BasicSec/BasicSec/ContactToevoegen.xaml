@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BasicSec"
         mc:Ignorable="d"
         Title="Contact toevoegen" Height="263.948" Width="480.258" Icon="pxl.png">
-    <Grid Background="#FF00FF68">
+    <Grid Background="White">
         <TextBox x:Name="textBoxNaam" HorizontalAlignment="Left" Height="23" Margin="50,76,0,0" TextWrapping="Wrap" Text="Naam" VerticalAlignment="Top" Width="170" BorderBrush="Black"/>
         <Label x:Name="label" Content="Naam:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,45,0,0" Width="43" FontWeight="SemiBold"/>
         <Label x:Name="label1" Content="IP:" HorizontalAlignment="Left" Margin="273,45,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.882,-0.478" Width="40" FontWeight="SemiBold"/>
